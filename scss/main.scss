@@ -1,4 +1,72 @@
+@import "./partials/base";
+@import "./partials/mixins";
+
+html, body {
+  height: 100%;
+  width: 100%;
+  @include centerer;
+}
+
 h1 {
-  font-size: 80px;
-  font-family: 'Ariel';
+  font-size: 42px;
+  font-family: "Avenir";
+  text-transform: uppercase;
+  color: #fff;
+}
+
+body {
+  background-color: $bg-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div {
+  transform-style: preserve-3d;
+  perspective: 20000px;
+}
+
+.plane {
+  font-size: 60px;
+  position: relative;
+  transform: rotateX(60deg) rotateZ(45deg);
+
+  .line {
+    position: absolute;
+    height: $cube-s;
+    width: $cube-s * $cube-n-root;
+    @for $i from 0 to $cube-n-root {
+      // ?
+      &:nth-child(#{$i + 1}) {
+        top: $cube-s * $i; // ?
+        animation: anim 1s ease-in-out infinite $i * .1s; // ?
+
+        .cube {
+          @for $k from 0 to $cube-n-root {
+            &:nth-child(#{$k + 1}) {
+              $bg: mix($s-color, $p-color, random() * 70 * 1%); // ?
+              background: $bg;
+              animation: anim 1s ease-in-out infinite $k * .1s;
+
+              .cube__f {
+                @for $m from 0 to 3 {
+                  &:nth-child(#{$m + 1}) {
+                    @if $m < 1 {
+                      background: lighten($bg, 20%);
+                    } @else if $m == 1 {
+                      background: darken($bg, 10%);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .cube {
+
+    }
+  }
 }

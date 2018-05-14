@@ -1,0 +1,9 @@
+// Assuming the parent element has position: relative;
+// the mixin centers a child element both horizontally and vertically inside,
+// no matter what the width of height of either are.
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

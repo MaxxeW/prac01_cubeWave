@@ -1,1 +1,1 @@
-h1{font-size:80px;font-family:'Ariel'}
+html,body{height:100%;width:100%;position:absolute;top:50%;left:50%;transform:translate(-50%, -50%)}h1{font-size:42px;font-family:"Avenir";text-transform:uppercase;color:#fff}body{background-color:#1F1A31;display:flex;align-items:center;justify-content:center}div{transform-style:preserve-3d;perspective:20000px}.plane{font-size:60px;position:relative}
