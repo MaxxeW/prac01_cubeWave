@@ -1,0 +1,28 @@
+'.jade / .pug 
+//output:index.html
+
+
+// Variables Declare: the square canvas (13*13) for cubes
+- var line_cube_n = 9
+- var cube_n = Math.pow(line_cube_n, 2)
+
+mixin cube()
+  .cube
+    - for (var i=0; i<3; i++)
+      .cube__f
+      
+html
+  head
+    link(href='/css/main.css', rel='stylesheet')
+  body
+    h1 01 Cube Wave
+    .scene
+      .plane
+      
+        - for (var j=0; j < Math.sqrt(cube_n); j++)
+        
+          .line
+            - for (var i=0; i < Math.sqrt(cube_n); i++)
+              +cube
+              
+    
