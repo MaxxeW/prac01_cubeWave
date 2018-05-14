@@ -1,5 +1,5 @@
 @import "./partials/base";
-@import "./partials/mixins";
+@import "./modules/mixins";
 
 html, body {
   height: 100%;
@@ -66,7 +66,32 @@ div {
     }
 
     .cube {
+      height: $cube-s;
+      width: $cube-s;
+      position: absolute;
+      transition: transform .1s ease-in-out;
+      backface-visibility: hidden;
 
+      @at-root {
+        @keyframes anim {
+          0%, 100% {
+            transform: translateZ(0);
+          }
+          50% {
+            transform: translateZ($cube-s/2);
+          }
+        }
+      }
+
+      @for $j from 0 to $cube-n-root {
+        &:nth-child(#{$j + 1}) {
+          left: $cube-s * $j;
+        }
+      }
+
+      &__f {
+
+      }
     }
   }
 }
