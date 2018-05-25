@@ -1,10 +1,13 @@
 @import "./partials/base";
 @import "./modules/mixins";
 
+center {
+  @include centerer;
+}
+
 html, body {
   height: 100%;
   width: 100%;
-  @include centerer;
 }
 
 h1 {
@@ -90,7 +93,19 @@ div {
       }
 
       &__f {
+        +center;
+        margin-top: -$cube-s /2;
+        margin-left: -$cube-s /2;
+        height: $cube-s;
+        width: $cube-s;
+        background: inherit;
 
+        @for $l from 0 to 3 {
+          &:nth-child(#{$l + 1}) {
+            transform: if($l < 2, rotateY(90 * $l * 1deg), rotateX(pow(-1, $l) * -90 * 1deg))
+                       translateZ($cube-s /2);
+          }
+        }
       }
     }
   }
